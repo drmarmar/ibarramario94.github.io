@@ -42,9 +42,9 @@ readme
 
 <p><b>Lvl 1-2</b></p>
 <p>The password is stored in a file called <b>-</b> so we must locate it and read it. Since its a special character, we must use cat with the directory indicator.</p>
-<span style="color:red">bandit1@melissa:~$ </span>ls
+<code><span style="color:red">bandit1@melissa:~$ </span>ls
 -
-<span style="color:red">bandit1@melissa:~$ </span>cat ~/-
+<span style="color:red">bandit1@melissa:~$ </span>cat ~/-</code>
 
 ---
 
