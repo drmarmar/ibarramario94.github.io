@@ -1,22 +1,20 @@
 ---
 title: About
 layout: page
+published: true
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+## Background
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Senior Computer Information Systems student with expected graduation in December 2017.  I am currently pursuing a CCNA Cyber Ops certification, with a scholarship directly from Cisco.  After that, I am planning to sign up for the Offensive Security Certified Professional course (OSCP) near September 2017.  In my spare time I practice penetration testing on vulnerable machines and I also experiment with homelabs.  I am also a mechanical keyboard enthusiast.</p>
+
+
+## Experience and Qualifications
+
+### Python
+
+<p>Python was my second language, after Java, and its the main language I currently use.  I use it to automate simple tasks, for many projects, and to assist in offensive security.</p>
 
 <h2>Skills</h2>
 
