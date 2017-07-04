@@ -53,7 +53,7 @@ drwxr-xr-x 3 root root 4096 Nov 14 2014 ..
 <span style="color:red">bandit3@melissa:~/inhere$ </span>cat .hidden</code></pre></figure>
 
 ### Lvl 4-5
-<p>Within the inhere directory the password is stored in the only human-readable file. I used the <i>file</i> command to display the file data types and locate the password.
+<p>Within the inhere directory the password is stored in the only human-readable file. I used the <i>file</i> command to display the file data types and locate the password.</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit4@melissa:~$ </span>ls
 inhere
 <span style="color:red">bandit4@melissa:~$ </span>file inhere/*
@@ -73,7 +73,7 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 
 ### Lvl 5-6
-<p>Within the inhere directory the password is stored in the only human-readable file. I used the <i>file</i> command to display the file data types and locate the password.
+<p>Within the inhere directory the password is stored in the only human-readable file. I used the <i>file</i> command to display the file data types and locate the password.</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit5@melissa:~$ </span>ls
 <span style="color:blue">inhere</span>
 <span style="color:red">bandit5@melinda:~$</span> ls
