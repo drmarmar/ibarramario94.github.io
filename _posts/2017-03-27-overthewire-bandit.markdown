@@ -17,15 +17,23 @@ description: Overthewire Bandit Lvls 1-23
 Bandit is a wargame that is often the starting point for beginners. It gives you a chance to learn the basics of getting around a linux OS
 ### Lvl 0-1
 In the very first level you simply use the _ls_ command to view files in the specified directory. You also use the _cat_ command to read files.
+```
 <span style="color:red">bandit0@melissa:~$ </span>ls
 readme
 <span style="color:red">bandit0@melissa:~$ </span>cat readme
-
+```
 {% highlight bash %}
 <span style="color:red">bandit0@melissa:~$</span> ls
 readme
 <span style="color:red">bandit0@melissa:~$</span> cat readme
 {% endhighlight %}
+
+
+```bash
+<span style="color:red">bandit0@melissa:~$</span> ls
+readme
+<span style="color:red">bandit0@melissa:~$</span> cat readme
+```
 
 ---
 
