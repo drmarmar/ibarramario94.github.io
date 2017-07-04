@@ -458,9 +458,9 @@ Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hos
 <p>'There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new'</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit17@melinda:~$</span> diff passwords.new passwords.old
 42c42
-< kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+ kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
 ---
-> BS8bqB1kqkinKJjuxL6k072Qq9NRwQpR
+ BS8bqB1kqkinKJjuxL6k072Qq9NRwQpR
 </code></pre></figure>
 <p>We want the top password because that's the one from the passwords.new file.</p>
 
