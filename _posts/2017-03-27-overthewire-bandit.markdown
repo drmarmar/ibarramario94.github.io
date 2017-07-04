@@ -76,7 +76,7 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 <p>Within the inhere directory the password is stored in the only human-readable file. I used the <i>file</i> command to display the file data types and locate the password.
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit5@melissa:~$ </span>ls
 <span style="color:blue">inhere</span>
-<span style="color:red">bandit5@melinda:~$ ls
+<span style="color:red">bandit5@melinda:~$</span> ls
 inhere
 <span style="color:red">bandit5@melinda:~$</span> cd inhere/
 <span style="color:red">bandit5@melinda:~/inhere$</span> ls -al
