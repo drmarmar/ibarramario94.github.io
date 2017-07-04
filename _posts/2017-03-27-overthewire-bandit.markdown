@@ -23,16 +23,15 @@ In the very first level you simply use the _ls_ command to view files in the spe
 <p>The password is stored in a file called <b>-</b> so we must locate it and read it. Since its a special character, we must use cat with the directory indicator.</p>
 <code><span style="color:red">bandit1@melissa:~$ </span>ls
 -
-<span style="color:red">bandit1@melissa:~$ </span>cat ~
--</code>
+<span style="color:red">bandit1@melissa:~$ </span>cat ~/-</code>
 
 
 <p><b>Lvl 1-2</b></p>
 <p>The password is stored in a file called <b>-</b> so we must locate it and read it. Since its a special character, we must use cat with the directory indicator.</p>
-<figure><code><span style="color:red">bandit1@melissa:~$ </span>ls
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit1@melissa:~$ </span>ls
 -
-<span style="color:red">bandit1@melissa:~$ </span>cat ~
--</code></figure>
+<span style="color:red">bandit1@melissa:~$ </span>cat ~/-</code></pre></figure>
+
 ---
 
 ## Code
