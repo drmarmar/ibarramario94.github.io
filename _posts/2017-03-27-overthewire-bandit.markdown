@@ -206,7 +206,7 @@ Are you sure you want to continue connecting (yes/no)? yes
 BfMYroe26WYalil77FoDi9qh59eK5xNr
 </code></pre></figure>
 
-### Lvl 16-17
+### Lvl 15-16
 <p>'The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.'</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit15@melinda:~$</span> openssl s_client -ign_eof -connect localhost:30001
 CONNECTED(00000003)
@@ -488,7 +488,7 @@ IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 </code></pre></figure>
 
-### Lvl 20-21
+<h3>Lvl 20-21</h3>
 <p>'There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21)..'</p>
 
 <p>We'll need to ssh to bandit20 on two shells. On the first shell, we must listen on a certain port and run suconnect on shell 2 using the same port. Send the current password of the level in the first shell to receive the password for level 21.</p>
