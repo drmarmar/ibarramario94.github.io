@@ -466,7 +466,7 @@ Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hos
 
 <h3>Lvl 18-19</h3>
 <p>'The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.'</p>
-```
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">
 <span style="color:red"> $</span>ssh -t bandit18@bandit.labs.overthewire.org bash --norc
 
 This is the OverTheWire game server. More information on http://www.overthewire.org/wargames
@@ -481,7 +481,7 @@ bandit18@bandit.labs.overthewire.org's password:
 readme
 <span style="color:red">bash-4.3$</span> cat readme
 IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
-```
+</code></pre></figure>
 
 ### Lvl 19-20
 <p>'To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.'</p>
