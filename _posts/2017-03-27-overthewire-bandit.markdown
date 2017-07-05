@@ -466,7 +466,7 @@ Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hos
 
 ### Lvl 18-19
 <p>'The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.'</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red"> $</span> ssh -t bandit18@bandit.labs.overthewire.org bash --norc
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red"> $</span> <p>ssh -t bandit18@bandit.labs.overthewire.org bash --norc
 
 This is the OverTheWire game server. More information on http://www.overthewire.org/wargames
 
@@ -475,7 +475,7 @@ e.g. vortex4, semtex2, ...
 
 Note: at this moment, blacksun is not available.
 
-bandit18@bandit.labs.overthewire.org's password:
+bandit18@bandit.labs.overthewire.org's password:</p>
 <span style="color:red">bash-4.3$</span> ls
 readme
 <span style="color:red">bash-4.3$</span> cat readme
