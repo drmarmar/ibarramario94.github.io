@@ -464,7 +464,7 @@ Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hos
 </code></pre></figure>
 <p>We want the top password because that's the one from the passwords.new file.</p>
 
-### Lvl 18-19
+<h3>Lvl 18-19</h3>
 <p>'The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.'</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red"> $</span> <p>ssh -t bandit18@bandit.labs.overthewire.org bash --norc
 
