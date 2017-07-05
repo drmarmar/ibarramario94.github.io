@@ -7,7 +7,7 @@ headerImage: false
 tag:
 - writeup
 - wargame
-star: true
+star: false
 category: blog
 author: marioibarra
 description: Overthewire Bandit Lvls 1-23
