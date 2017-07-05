@@ -466,7 +466,7 @@ Failed to add the host to the list of known hosts (/home/bandit16/.ssh/known_hos
 
 <h3>Lvl 18-19</h3>
 <p>'The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.'</p>
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red"> $</span> <p>ssh -t bandit18@bandit.labs.overthewire.org bash --norc
+```<span style="color:red"> $</span>ssh -t bandit18@bandit.labs.overthewire.org bash --norc
 
 This is the OverTheWire game server. More information on http://www.overthewire.org/wargames
 
@@ -475,12 +475,12 @@ e.g. vortex4, semtex2, ...
 
 Note: at this moment, blacksun is not available.
 
-bandit18@bandit.labs.overthewire.org's password:</p>
+bandit18@bandit.labs.overthewire.org's password:
 <span style="color:red">bash-4.3$</span> ls
 readme
 <span style="color:red">bash-4.3$</span> cat readme
 IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
-</code></pre></figure>
+```
 
 ### Lvl 19-20
 <p>'To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.'</p>
@@ -504,7 +504,7 @@ GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
 </code></pre></figure>
 
-### Lvl 21-22
+<h3>Lvl 21-22</h3>
 <p>'A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.'</p>
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span style="color:red">bandit21@melinda:~$</span> cd /etc/cron.d
 <span style="color:red">bandit21@melinda:/etc/cron.d$</span> ls -al
