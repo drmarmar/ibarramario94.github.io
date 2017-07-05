@@ -103,15 +103,15 @@ IP ID Sequence Generation: All zeros
 
 Host script results:
 |_clock-skew: mean: 1m47s, deviation: 0s, median: 1m47s
-| nbstat: NetBIOS name: KIOPTRIX, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| nbstat: NetBIOS name: KIOPTRIX, NetBIOS user: < unknown>, NetBIOS MAC: < unknown> (unknown)
 | Names:
-|   KIOPTRIX<00>         Flags: <unique><active>
-|   KIOPTRIX<03>         Flags: <unique><active>
-|   KIOPTRIX<20>         Flags: <unique><active>
-|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
-|   MYGROUP<00>          Flags: <group><active>
-|   MYGROUP<1d>          Flags: <unique><active>
-|   MYGROUP<1e>          Flags: <group><active>
+|   KIOPTRIX<00>         Flags: < unique>< active>
+|   KIOPTRIX<03>         Flags: < unique>< active>
+|   KIOPTRIX<20>         Flags: < unique>< active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: < group>< active>
+|   MYGROUP<00>          Flags: < group>< active>
+|   MYGROUP<1d>          Flags: < unique>< active>
+|   MYGROUP<1e>          Flags: < group>< active>
 | Statistics:
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 |   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
