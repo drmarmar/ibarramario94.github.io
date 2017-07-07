@@ -16,7 +16,7 @@ externalLink: false
 
 ## SDN Lab
 
-This is a lab that was completed at my university last Spring.  It consisted of a Juniper EX4200 switch with 2 VLANs, a Zodiac FX OpenFlow switch, and an ESXi VM running Untangle and OpenDaylight.  The goal of the lab was to automatically apply port security to the Juniper switch after receiving information from the OpenDaylight SDN controller.
+This is a lab that was completed at my university last Spring of 2017.  It consisted of a Juniper EX4200 switch with 2 VLANs, a Zodiac FX OpenFlow switch, and an ESXi VM running Untangle and OpenDaylight.  The goal of the lab was to automatically apply port security to the Juniper switch after receiving information from the OpenDaylight SDN controller.
 
 This was accomplished with the following python script:
 
