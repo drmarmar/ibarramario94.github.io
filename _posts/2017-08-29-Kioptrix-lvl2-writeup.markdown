@@ -132,8 +132,6 @@ Copied to '/home/mario/oscp/exam/192.168.75.129/privesc/'
 </code></pre></figure>
 
 
-
-
 ![image](/asset/images/kioptrixlvl2/kernel-exploit.png)
 
 
