@@ -132,7 +132,7 @@ Copied to '/home/mario/oscp/exam/192.168.75.129/privesc/'
 </code></pre></figure>
 
 
-![image](/asset/images/kioptrixlvl2/kernel-exploit.png)
+![image](/assets/images/kioptrixlvl2/kernel-exploit.png)
 
 
 It wasn't too bad getting root, but I did spend alot of time trying to use other exploits that weren't on the kernel.
