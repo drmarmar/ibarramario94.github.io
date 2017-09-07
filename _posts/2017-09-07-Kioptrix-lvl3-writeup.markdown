@@ -76,45 +76,75 @@ Port 80 is open so I did a nikto scan.
 </code></pre></figure>
 
 I checked out http://192.168.8.134/phpmyadmin and found a login page.
+
 ![image](/assets/images/kioptrixlvl3/phpmyadmin.png)
+
 I was able to login using the username __"admin' OR '1'='1"__.  I searched for vulnerabilities on the phpmyadmin page, but nothing stood out so I took a break from that and tried something else.
 
 
-After looking at the blogs on the website, a link was mentioned with a "/gallery" directory.  
+After looking at the blogs on the website, a link was mentioned with a "/gallery" directory.
+
 ![image](/assets/images/kioptrixlvl3/blog.png)
+
 I checked it out and saw that it was a webapp called __"gallarific"__ so I searched for it on searchsploit.
+
 ![image](/assets/images/kioptrixlvl3/gallarific.png)
+
 ![image](/assets/images/kioptrixlvl3/searchsploit.png)
+
 Reading it gave a hint that the webapp was vulnerable to SQL injection, and it even gave an example.
+
 ![image](/assets/images/kioptrixlvl3/searchsploit-2.png)
+
 Using the example from the exploit, I executed it with the hackbar plugin.  It worked and resulted in admin credentials.  The account looks like it belonged to the webapp itself so I kept trying other injections.
+
 ![image](/assets/images/kioptrixlvl3/gallarific-exploit.png)
+
 I modified the SQL query to read the __/etc/passwd__ file and noticed there were two accounts named "__loneferret__" and "__dreg__" on the system.
+
 ![image](/assets/images/kioptrixlvl3/gallarific-passwd.png)
+
 Next I enumerated the tables in mysql.
+
 ![image](/assets/images/kioptrixlvl3/gallarific-tables-enum.png)
+
 There was a table called "__dev_accounts__" so I modified the injection again to read the entries in that table.
+
 ![image](/assets/images/kioptrixlvl3/gallarific-credentials.png)
+
 Two accounts, "__loneferret__" and "__dreg__", were listed along with their password hashes.  The hashes looked like MD5 hashes, but just to be sure I ran them through __hash-identifier__.
+
 ![image](/assets/images/kioptrixlvl3/hash-identifier.png)
+
 They were confirmed to be MD5 hashes.  I ran the hash for "__loneferret__" on __findmyhash__.
+
 ![image](/assets/images/kioptrixlvl3/findmyhash.png)
+
 It cracked the hash and the password was "__starwars__".
+
 ![image](/assets/images/kioptrixlvl3/.png)
+
 Using those credentials, I SSHed into the box since port 22 was open.
+
 ![image](/assets/images/kioptrixlvl3/ssh.png)
 
 I used a script to check for possible vulnerabilities and relevant information.  I attempted a kernel exploit on the box, but it did not work.  I then moved on to check what sudo privileges the user had.  
+
 The user had sudo privileges for xterm so I tried to run it as sudo, but received an error.  This error was fixed by exporting the system TERM.  
+
 Since I can use xterm with sudo privileges, I tried editing the __/etc/sudoers__ file to add extra privileges.
+
 ![image](/assets/images/kioptrixlvl3/sudo-l.png)
 
 
 The following screen showed.  In order to edit the file, I had to __ALT + F__, select __Open__, and select __/etc/sudoers__.
+
 ![image](/assets/images/kioptrixlvl3/sudoers.png) 
 
 On the sudoers file I located the user __loneferret_ and added the permission __/bin/sh__ to the file.  This will allow me to run the executable system shell with sudo privileges.  I saved with __Alt + F__ and exited.
+
 ![image](/assets/images/kioptrixlvl3/sudoers-edit-2.png)
 
 I ran __sudo /bin/sh__ and confirmed that I had a root shell.
+
 ![image](/assets/images/kioptrixlvl3/root.png)
