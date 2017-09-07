@@ -82,7 +82,7 @@ I checked out http://192.168.8.134/phpmyadmin and found a login page.
 I was able to login using the username __"admin' OR '1'='1"__.  I searched for vulnerabilities on the phpmyadmin page, but nothing stood out so I took a break from that and tried something else.
 
 
-After looking at the blogs on the website, a link was mentioned with a "/gallery" directory.
+After looking at the blogs on the website, a link was mentioned with a "__/gallery__" directory.
 
 ![image](/assets/images/kioptrixlvl3/blog.png)
 
