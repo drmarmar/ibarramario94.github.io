@@ -122,7 +122,7 @@ They were confirmed to be MD5 hashes.  I ran the hash for "__loneferret__" on __
 
 It cracked the hash and the password was "__starwars__".
 
-![image](/assets/images/kioptrixlvl3/.png)
+![image](/assets/images/kioptrixlvl3/findmyhash-2.png)
 
 Using those credentials, I SSHed into the box since port 22 was open.
 
@@ -141,7 +141,7 @@ The following screen showed.  In order to edit the file, I had to __ALT + F__, s
 
 ![image](/assets/images/kioptrixlvl3/sudoers.png) 
 
-On the sudoers file I located the user __loneferret_ and added the permission __/bin/sh__ to the file.  This will allow me to run the executable system shell with sudo privileges.  I saved with __Alt + F__ and exited.
+On the sudoers file I located the user __loneferret__ and added the permission __/bin/sh__ to the file.  This will allow me to run the executable system shell with sudo privileges.  I saved with __Alt + F__ and exited.
 
 ![image](/assets/images/kioptrixlvl3/sudoers-edit-2.png)
 
