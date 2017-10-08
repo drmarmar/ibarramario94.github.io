@@ -13,7 +13,7 @@ published: true
 <h2>Skills and Certifications</h2>
 
 <ul class="skill-list">
-	<li>Cisco Certified Network Associate Cyber Ops (__CCNA Cyber Ops__)</li>
+	<li>Cisco Certified Network Associate Cyber Ops (CCNA Cyber Ops)</li>
   	<li>Python, Bash, Java, HTML/CSS</li>
   	<li>Git</li>
 	<li>Splunk, Snort, Wireshark</li>
