@@ -7,7 +7,7 @@ published: true
 
 ## Background
 
-<p>Senior Computer Information Systems student with expected graduation in December 2017.  I am currently pursuing a CCNA Cyber Ops certification, with a scholarship directly from Cisco.  After that, I am planning to sign up for the Offensive Security Certified Professional course (OSCP) near September 2017.  In my spare time I practice penetration testing on vulnerable machines and I also experiment with homelabs.  I am also a mechanical keyboard enthusiast.</p>
+<p>Senior Computer Information Systems student with expected graduation in December 2017.  I recently received my Cisco Certified Network Associate Cyber Ops (CCNA Cyber Ops) on 10/02/17.  Now I am planning to sign up for the Offensive Security Certified Professional course (OSCP) by the beginning of November 2017.  In my spare time I practice penetration testing on vulnerable machines and I also experiment with homelabs.  I am also a mechanical keyboard enthusiast.</p>
 
 
 <h2>Skills and Certifications</h2>
