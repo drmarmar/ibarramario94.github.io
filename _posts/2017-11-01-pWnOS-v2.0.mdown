@@ -1,0 +1,60 @@
+---
+title: "pWnOS v2.0"
+layout: post
+date: 2017-11-01
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- Writeup
+- Pentest
+category: blog
+author: marioibarra
+description:  pWnOS v2.0 Writeup
+---
+
+# pWnOS v2.0 Writeup
+
+Unlike most Vulnhub VMs, this one had a static IP of **10.10.10.100**, so no need do a ping sweep to find its IP.
+
+
+## Recon/Enumeration
+
+![image](/assets/images/pWnOS2/nmap.png)
+
+The nmap scan returned only port 22 and 80 open.  I always like to start with port 80 during these assessments.
+
+
+### Port 80
+
+For webpages, I like to run nikto and dirb scans to locate any interesting directories and possible vulnerabilities.  The nikto scan didn't return anything interesting so I moved on to dirb.
+
+![image](/assets/images/pWnOS2/dirb.png)
+
+The dirb scan returned some interesting directories.  The one that stood out to me was **/blog**.  After inspecting the directory, I found this:
+
+![image](/assets/images/pWnOS2/docs.png)
+
+Within one of the files, I was able to find the web app name and version: **Simple PHP Blog 0.3.8**.  With this information I searched **searchsploit** for any known exploits.  I found one that wiped the password file for the web app and created a new user.
+
+![image](/assets/images/pWnOS2/user.png)
+
+
+## Exploitation
+
+I created a new user under the web app blog and I tried to upload a **php reverse shell** under images.
+
+![image](/assets/images/pWnOS2/upload.png)
+
+
+![image](/assets/images/pWnOS2/uploaded-shell.png)
+
+The upload was a success! So I opened up a handler on metasploit.
+
+![image](/assets/images/pWnOS2/meterpreter.png)
+
+I gained access to a php shell, so now I need to escalate my privileges.  
+
+
+## Privilege Escalation
+
+I haven't succeeded in getting a root shell yet, but I will update this when I do.
