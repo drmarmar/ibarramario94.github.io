@@ -58,8 +58,10 @@ I gained access to a php shell, so now I need to escalate my privileges.
 ## Privilege Escalation
 
 
-I upgraded to a TTY shell using 
-```python -c 'import pty; pty.spawn("/bin/sh")'
+I upgraded to a TTY shell using:
+
+```python
+python -c 'import pty; pty.spawn("/bin/sh")'
 ```
 
 I nomrally use this [enumeration script](https://github.com/rebootuser/LinEnum) to speed up the process.
@@ -67,7 +69,7 @@ I found an interesting file within the home directory called <b>mysqli_connect.p
 
 ![image](/assets/images/pWnOS2/mysqli.png)
 
-Unfortunately, this file didnt help, but I backtracked to <b>/var/<b> and found another copy with different credentials.
+Unfortunately, this file didnt help, but I backtracked to <b>/var/</b> and found another copy with different credentials.
 
 ![image](/assets/images/pWnOS2/mysqli2.png)
 
