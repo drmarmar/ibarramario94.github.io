@@ -57,4 +57,31 @@ I gained access to a php shell, so now I need to escalate my privileges.
 
 ## Privilege Escalation
 
-I haven't succeeded in getting a root shell yet, but I will update this when I do.
+
+I upgraded to a TTY shell using 
+```python -c 'import pty; pty.spawn("/bin/sh")'
+```
+
+I nomrally use this [enumeration script](https://github.com/rebootuser/LinEnum) to speed up the process.
+I found an interesting file within the home directory called <b>mysqli_connect.php</b>.
+
+![image](/assets/images/pWnOS2/mysqli.png)
+
+Unfortunately, this file didnt help, but I backtracked to <b>/var/<b> and found another copy with different credentials.
+
+![image](/assets/images/pWnOS2/mysqli2.png)
+
+Using those credentials, I was able to login to mysql and enumerate the databases and tables.
+
+
+![image](/assets/images/pWnOS2/sql-login.png)
+
+
+![image](/assets/images/pWnOS2/tables2.png)
+
+
+I was stuck for a bit trying to use an exploit on mysql, so I took a step back and tried something simple.  I took the original mysql login and I tried to login to the root user on the machine.
+
+![image](/assets/images/pWnOS2/root.png)
+
+The credentials actually worked... DON'T forget to try the simple solutions...  
