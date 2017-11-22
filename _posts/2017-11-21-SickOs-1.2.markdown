@@ -45,7 +45,7 @@ After enumerating the http service **lighttpd**, a **/test/** directory was foun
 
 ![image](/assets/images/sickos1.2/test.png)
 
-I checked for the PUT option was enabled on the directory with curl.
+I checked if the PUT option was enabled on the directory with curl.
 
 ![image](/assets/images/sickos1.2/curl.png)
 
