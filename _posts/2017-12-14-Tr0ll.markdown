@@ -1,7 +1,7 @@
 ---
 title: "Tr0ll"
 layout: post
-date: 2017-11-21
+date: 2017-12-14
 image: /assets/images/markdown.jpg
 headerImage: false
 tag:
@@ -231,4 +231,3 @@ Running the python and then the suid file would result in a root shell.
 ![image](/assets/images/Tr0ll/suid.png)
 
 ![image](/assets/images/Tr0ll/flag.png)
-
