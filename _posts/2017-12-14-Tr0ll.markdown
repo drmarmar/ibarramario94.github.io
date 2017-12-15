@@ -18,7 +18,7 @@ description:  Tr0ll Writeup
 
 ## Recon & Enumeration
 
-An NMAP scan revealed 2 ports open on the target.
+An NMAP scan revealed 3 ports open on the target.
 
 <figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span>enum/10.10.10.33 » cat nmap_heavy.txt                                                                                                                          
 ###################################################                                                                                                                           
