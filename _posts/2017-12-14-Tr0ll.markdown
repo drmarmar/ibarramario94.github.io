@@ -20,7 +20,7 @@ description:  Tr0ll Writeup
 
 An NMAP scan revealed 3 ports open on the target.
 
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span>enum/10.10.10.33 » cat nmap_heavy.txt                                                                                                                          
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span> enum/10.10.10.33 » cat nmap_heavy.txt                                                                                                                          
 ###################################################                                                                                                                           
                                                                                                                                                                               
 nmap -T4 -Pn -A -sV --top-ports 10000 10.10.10.33                                                                                                                             
@@ -73,8 +73,7 @@ HOP RTT     ADDRESS
 
 I first looked into FTP.  Anonymous login was allowed, but there was only one file that I could download.
 
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span>
-enum/10.10.10.33 ‹master*› » ftp 10.10.10.33 21
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span> enum/10.10.10.33 ‹master*› » ftp 10.10.10.33 21
 Connected to 10.10.10.33.
 220 (vsFTPd 3.0.2)
 Name (10.10.10.33:mario): anonymous
@@ -109,8 +108,7 @@ It actually worked... I knew this was going to be a hectic VM after that.
 
 I downloaded the file "roflmao" and viewed its contents:
 
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span>
-~/Downloads » strings roflmao                                                          
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span> ~/Downloads » strings roflmao                                                          
 /lib/ld-linux.so.2                                  
 libc.so.6                                             
 _IO_stdin_used                                                      
@@ -148,8 +146,7 @@ After some thinking, I thought maybe the folder **this_folder_contains_the_passw
 
 I tried the usernames with the password "**Pass.txt**" and eventually, the username **overflow** worked.
 
-<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span>
-enum/10.10.10.33 ‹master*› » ssh 10.10.10.33 -l overflow                                                                                                           
+<figure class="highlight"><pre><code class="nohighlight" data-lang="bash"><span style="color:red">kali</span> enum/10.10.10.33 ‹master*› » ssh 10.10.10.33 -l overflow                                                                                                           
 overflow@10.10.10.33's password:                                                                                                                                              
 Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-32-generic i686)  
 
